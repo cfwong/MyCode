@@ -1,0 +1,20 @@
+Nim
+* The game starts with a number of piles of stones. The number of stones in each pile may not be equal.
+* The players alternately pick up  or more stones from  pile
+* The player to remove the last stone wins.
+// strategy is to get a num-sum of 0 in every move, and if it is already 0, you lose
+    static String nimGame(int[] pile) {
+        int res = 0;
+        for (int p: pile)
+            res ^= p;
+        return res==0? "Second": "First";
+    }
+
+
+Game of Stones
+* In a single move, a player can remove either 2,3 , or 5 stones from the game board.
+* If a player is unable to make a move, that player loses the game.
+// 0,1 lose, 2-6 win
+    static String gameOfStones(int n) {
+        return n%7<2? "Second": "First";
+    }
