@@ -1,0 +1,17 @@
+int chartFix(int[] chart) {
+  ArrayList<Integer> toRemove = new ArrayList<>();
+  for (int i = 0; i < chart.length; i++) {
+    int cur = i;
+    for (int j = 0; j < i; j++) {
+      if (chart[j] < chart[i]) {
+        cur = Math.min(cur, toRemove.get(j) + i - j - 1);
+      }
+    }
+    toRemove.add(cur);
+  }
+  int res = Integer.MAX_VALUE;
+  for (int i = 0; i < toRemove.size(); i++) {
+    res = Math.min(res, toRemove.get(toRemove.size() - i - 1) + i);
+  }
+  return res;
+}
