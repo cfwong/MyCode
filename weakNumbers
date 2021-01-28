@@ -1,0 +1,32 @@
+int[] weakNumbers(int n) {
+  int[] d = new int[n + 1];
+  for (int x = 1; x <= n; x++) {
+    d[x] = 0;
+    for (int y = 1; y * y <= x; y++) {
+      if (x % y == 0) {
+        d[x] += 2;
+        if (y*y==x)
+          d[x]--;
+      }
+    }
+  }
+  int[] weakness = new int[n + 1];
+  int maxWeakness = 0;
+  int cnt = 0;
+  for (int x = 1; x <= n; x++) {
+    weakness[x] = 0;
+    for (int y = 1; y < x; y++) {
+      if (d[y] > d[x]) {
+        weakness[x]++;
+      }
+    }
+    if (weakness[x] == maxWeakness) {
+      cnt++;
+    }
+    if (weakness[x] > maxWeakness) {
+      maxWeakness = weakness[x];
+      cnt = 1;
+    }
+  }
+  return new int[]{maxWeakness, cnt};
+}
