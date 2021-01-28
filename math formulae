@@ -1,2 +1,5 @@
 sum of squares: n(n+1)(2n+1)/6 or n*n*n/3+n*n/2+n/6
 area of triangle (given 3 sides): sqrt(s(s-a)(s-b)(s-c)) where s=(a+b+c)/2
+
+double area of triangle with (x1,y1),(x2,y2),(x3,y3) is (x1-x3)*(y1-y2)-(x1-x2)*(y1-y3)
+or A = (x1y2+x2y3+x3y1-x2y1-x3y2-x1y3).abs() - see shoelace formula
