@@ -1,0 +1,17 @@
+int i;
+String A[] = " one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty thirty forty fifty sixty seventy eighty ninety".split(" "),r="",t;
+String numberToWord(int n) {
+    for (; n>0; n/=1e3,i++)
+        if (!(t=f(n%1000).trim()).isEmpty())
+            r = t + (i>0? " thousand ": "") + r;
+    return (r.charAt(0)+r.substring(1)).trim();
+}
+
+
+String f(int n) {
+    t="";
+    if (n>99)
+        t=A[n/100]+" hundred ";
+    n%=100;
+    return t += n<21? A[n]: A[n/10+18]+(n%10>0? "-"+A[n%10]: "");    
+}
