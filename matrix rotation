@@ -1,0 +1,42 @@
+int m,n,c,a,b,v,i,x,y,p,q;
+Object contoursShifting(int[][] M) {
+    var A=new int[m=M.length][n=M[0].length];
+    for (c=-~(m>n?n:m)/2; i<c; i++) {
+        x=y=i;
+        p = m-i-1;
+        q = n-i-1;
+        do {
+            v=M[a=x][b=y];
+            if (x==i) {
+                if (++y>q) {
+                    y = q;
+                    if (++x>p) {
+                        x = p;
+                        y = i;
+                    }
+                }
+            }
+            else if (y==q) {
+                if (++x>p) {
+                    x = p;
+                    if (--y < i)
+                        y = x = i;
+                }
+            }
+            else if (x==p) {
+                if (--y<i) {
+                    y = i;
+                    x--;
+                }
+            }
+            else if (y==i)
+                x--;
+            if (i%2==0)
+                A[x][y] = v;
+            else
+                A[a][b] = M[x][y];
+        }
+        while (x!=i | y!=i);
+    }
+    return A;
+}
