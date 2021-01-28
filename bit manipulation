@@ -1,0 +1,11 @@
+Given a long integer x, count no. of values of a where a^x>x and 0<a<x.
+    static long theGreatXor(long x) {
+        return 2*Long.highestOneBit(x)-x-1;
+    }
+
+
+and from a to b: find highest 1 bit from b where that bit in a is 0, clear all lower 1's
+    static long andProduct(long a, long b) {
+        b ^= a;
+        return b>0? a & ~(Long.highestOneBit(b)-1): a;
+    }
