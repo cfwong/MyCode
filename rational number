@@ -1,0 +1,33 @@
+def F(A) { // fractional form to fraction
+    def N=1, D=A[-1]
+    if (A.size>1)
+        for (a in A[-2..0]) {
+            N += a*D
+            def T = N
+            N = D
+            D = T
+        }
+    return [D,N]  
+}
+
+
+def G(N,D) { //fraction to fractional form
+    if (D<0) {
+        D = -D
+        N = -N
+    }
+    def R=[], x = N/D as int
+    N %= D
+    if (N < 0) {
+        N += D
+        x -= 1
+    }
+    R << x
+    while (N>1) {
+        R << (D/N as int)
+        N = D%(D=N)
+    }
+    if (N)
+        R << D
+    return R
+}
